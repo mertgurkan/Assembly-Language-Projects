@@ -1,0 +1,1231 @@
+
+//campus.mcgill.ca/EMF/ELE/aozhas/Desktop/G58_LAB4/main.axf:     file format elf32-littlearm
+
+
+Disassembly of section .vectors:
+
+00000000 <__cs3_interrupt_vector>:
+   0:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
+  10:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
+  20:	40 00 00 00 bc 0a 00 00 c0 0a 00 00 c4 0a 00 00     @...............
+  30:	c8 0a 00 00 b8 0a 00 00 cc 0a 00 00 d0 0a 00 00     ................
+
+Disassembly of section .text:
+
+00000040 <__cs3_reset>:
+  40:	ea000026 	b	e0 <__cs3_start_asm_sim>
+
+00000044 <__cs3_start_c>:
+  44:	e59f608c 	ldr	r6, [pc, #140]	; d8 <__cs3_start_c+0x94>
+  48:	e3560000 	cmp	r6, #0
+  4c:	e92d4080 	push	{r7, lr}
+  50:	e2466001 	sub	r6, r6, #1
+  54:	0a00001e 	beq	d4 <__cs3_start_c+0x90>
+  58:	e59f507c 	ldr	r5, [pc, #124]	; dc <__cs3_start_c+0x98>
+  5c:	e3a00000 	mov	r0, #0
+  60:	e3a01000 	mov	r1, #0
+  64:	e515200c 	ldr	r2, [r5, #-12]
+  68:	e515e010 	ldr	lr, [r5, #-16]
+  6c:	e5154008 	ldr	r4, [r5, #-8]
+  70:	e15e0002 	cmp	lr, r2
+  74:	00822004 	addeq	r2, r2, r4
+  78:	0a000009 	beq	a4 <__cs3_start_c+0x60>
+  7c:	e3540000 	cmp	r4, #0
+  80:	0a000007 	beq	a4 <__cs3_start_c+0x60>
+  84:	e1a07002 	mov	r7, r2
+  88:	e1a0c002 	mov	r12, r2
+  8c:	e8be000c 	ldm	lr!, {r2, r3}
+  90:	e8ac000c 	stmia	r12!, {r2, r3}
+  94:	e067300c 	rsb	r3, r7, r12
+  98:	e1540003 	cmp	r4, r3
+  9c:	e1a0200c 	mov	r2, r12
+  a0:	1afffff9 	bne	8c <__cs3_start_c+0x48>
+  a4:	e515e004 	ldr	lr, [r5, #-4]
+  a8:	e35e0000 	cmp	lr, #0
+  ac:	11a03002 	movne	r3, r2
+  b0:	0a000003 	beq	c4 <__cs3_start_c+0x80>
+  b4:	e8a30003 	stmia	r3!, {r0, r1}
+  b8:	e062c003 	rsb	r12, r2, r3
+  bc:	e15e000c 	cmp	lr, r12
+  c0:	1afffffb 	bne	b4 <__cs3_start_c+0x70>
+  c4:	e2466001 	sub	r6, r6, #1
+  c8:	e3760001 	cmn	r6, #1
+  cc:	e2855014 	add	r5, r5, #20
+  d0:	1affffe3 	bne	64 <__cs3_start_c+0x20>
+  d4:	eb00025e 	bl	a54 <__cs3_premain>
+  d8:	00000001 	.word	0x00000001
+  dc:	00000bb8 	.word	0x00000bb8
+
+000000e0 <__cs3_start_asm_sim>:
+  e0:	e28f103c 	add	r1, pc, #60	; 0x3c
+  e4:	e3a00016 	mov	r0, #22
+  e8:	ef123456 	svc	0x00123456
+  ec:	e3500000 	cmp	r0, #0
+  f0:	ba000008 	blt	118 <__cs3_start_asm_sim+0x38>
+  f4:	e59f2028 	ldr	r2, [pc, #40]	; 124 <__cs3_heap_start_ptr>
+  f8:	e59fd01c 	ldr	sp, [pc, #28]	; 11c <__cs3_start_asm_sim+0x3c>
+  fc:	e5920008 	ldr	r0, [r2, #8]
+ 100:	e3500000 	cmp	r0, #0
+ 104:	11a0d000 	movne	sp, r0
+ 108:	e59f1010 	ldr	r1, [pc, #16]	; 120 <__cs3_start_asm_sim+0x40>
+ 10c:	e5920004 	ldr	r0, [r2, #4]
+ 110:	e3500000 	cmp	r0, #0
+ 114:	15810000 	strne	r0, [r1]
+ 118:	eaffffc9 	b	44 <__cs3_start_c>
+ 11c:	3ffffff8 	.word	0x3ffffff8
+ 120:	00000ff0 	.word	0x00000ff0
+
+00000124 <__cs3_heap_start_ptr>:
+ 124:	00001018 	.word	0x00001018
+
+00000128 <_start>:
+ 128:	e51fd000 	ldr	sp, [pc, #-0]	; 130 <_start+0x8>
+ 12c:	eaffffc4 	b	44 <__cs3_start_c>
+ 130:	3ffffff8 	.word	0x3ffffff8
+
+00000134 <deregister_tm_clones>:
+ 134:	e92d4008 	push	{r3, lr}
+ 138:	e59f002c 	ldr	r0, [pc, #44]	; 16c <deregister_tm_clones+0x38>
+ 13c:	e59f302c 	ldr	r3, [pc, #44]	; 170 <deregister_tm_clones+0x3c>
+ 140:	e0603003 	rsb	r3, r0, r3
+ 144:	e3530006 	cmp	r3, #6
+ 148:	8a000001 	bhi	154 <deregister_tm_clones+0x20>
+ 14c:	e8bd4008 	pop	{r3, lr}
+ 150:	e12fff1e 	bx	lr
+ 154:	e59f3018 	ldr	r3, [pc, #24]	; 174 <deregister_tm_clones+0x40>
+ 158:	e3530000 	cmp	r3, #0
+ 15c:	0afffffa 	beq	14c <deregister_tm_clones+0x18>
+ 160:	e1a0e00f 	mov	lr, pc
+ 164:	e12fff13 	bx	r3
+ 168:	eafffff7 	b	14c <deregister_tm_clones+0x18>
+ 16c:	00000ff8 	.word	0x00000ff8
+ 170:	00000ffb 	.word	0x00000ffb
+ 174:	00000000 	.word	0x00000000
+
+00000178 <register_tm_clones>:
+ 178:	e92d4008 	push	{r3, lr}
+ 17c:	e59f0034 	ldr	r0, [pc, #52]	; 1b8 <register_tm_clones+0x40>
+ 180:	e59f3034 	ldr	r3, [pc, #52]	; 1bc <register_tm_clones+0x44>
+ 184:	e0603003 	rsb	r3, r0, r3
+ 188:	e1a03143 	asr	r3, r3, #2
+ 18c:	e0833fa3 	add	r3, r3, r3, lsr #31
+ 190:	e1b010c3 	asrs	r1, r3, #1
+ 194:	1a000001 	bne	1a0 <register_tm_clones+0x28>
+ 198:	e8bd4008 	pop	{r3, lr}
+ 19c:	e12fff1e 	bx	lr
+ 1a0:	e59f2018 	ldr	r2, [pc, #24]	; 1c0 <register_tm_clones+0x48>
+ 1a4:	e3520000 	cmp	r2, #0
+ 1a8:	0afffffa 	beq	198 <register_tm_clones+0x20>
+ 1ac:	e1a0e00f 	mov	lr, pc
+ 1b0:	e12fff12 	bx	r2
+ 1b4:	eafffff7 	b	198 <register_tm_clones+0x20>
+ 1b8:	00000ff8 	.word	0x00000ff8
+ 1bc:	00000ff8 	.word	0x00000ff8
+ 1c0:	00000000 	.word	0x00000000
+
+000001c4 <__do_global_dtors_aux>:
+ 1c4:	e92d4010 	push	{r4, lr}
+ 1c8:	e59f402c 	ldr	r4, [pc, #44]	; 1fc <__do_global_dtors_aux+0x38>
+ 1cc:	e5d43000 	ldrb	r3, [r4]
+ 1d0:	e3530000 	cmp	r3, #0
+ 1d4:	1a000006 	bne	1f4 <__do_global_dtors_aux+0x30>
+ 1d8:	ebffffd5 	bl	134 <deregister_tm_clones>
+ 1dc:	e59f301c 	ldr	r3, [pc, #28]	; 200 <__do_global_dtors_aux+0x3c>
+ 1e0:	e3530000 	cmp	r3, #0
+ 1e4:	159f0018 	ldrne	r0, [pc, #24]	; 204 <__do_global_dtors_aux+0x40>
+ 1e8:	1320f000 	nopne	{0}
+ 1ec:	e3a03001 	mov	r3, #1
+ 1f0:	e5c43000 	strb	r3, [r4]
+ 1f4:	e8bd4010 	pop	{r4, lr}
+ 1f8:	e12fff1e 	bx	lr
+ 1fc:	00000ff8 	.word	0x00000ff8
+ 200:	00000000 	.word	0x00000000
+ 204:	00000b5c 	.word	0x00000b5c
+
+00000208 <frame_dummy>:
+ 208:	e92d4008 	push	{r3, lr}
+ 20c:	e59f3034 	ldr	r3, [pc, #52]	; 248 <frame_dummy+0x40>
+ 210:	e3530000 	cmp	r3, #0
+ 214:	159f0030 	ldrne	r0, [pc, #48]	; 24c <frame_dummy+0x44>
+ 218:	159f1030 	ldrne	r1, [pc, #48]	; 250 <frame_dummy+0x48>
+ 21c:	1320f000 	nopne	{0}
+ 220:	e59f002c 	ldr	r0, [pc, #44]	; 254 <frame_dummy+0x4c>
+ 224:	e5903000 	ldr	r3, [r0]
+ 228:	e3530000 	cmp	r3, #0
+ 22c:	0a000003 	beq	240 <frame_dummy+0x38>
+ 230:	e59f3020 	ldr	r3, [pc, #32]	; 258 <frame_dummy+0x50>
+ 234:	e3530000 	cmp	r3, #0
+ 238:	11a0e00f 	movne	lr, pc
+ 23c:	112fff13 	bxne	r3
+ 240:	e8bd4008 	pop	{r3, lr}
+ 244:	eaffffcb 	b	178 <register_tm_clones>
+ 248:	00000000 	.word	0x00000000
+ 24c:	00000b5c 	.word	0x00000b5c
+ 250:	00000ffc 	.word	0x00000ffc
+ 254:	00000bb8 	.word	0x00000bb8
+ 258:	00000000 	.word	0x00000000
+
+0000025c <test_char>:
+#include <stdio.h>
+
+#include "./drivers/inc/VGA.h"
+#include "./drivers/inc/ps2_keyboard.h"
+
+void test_char() {
+ 25c:	e92d4800 	push	{r11, lr}
+ 260:	e28db004 	add	r11, sp, #4
+ 264:	e24dd010 	sub	sp, sp, #16
+	int x,y;
+	char c = 0;
+ 268:	e3a03000 	mov	r3, #0
+ 26c:	e54b300d 	strb	r3, [r11, #-13]
+	
+	for (y=0; y <= 59; y++) {
+ 270:	e3a03000 	mov	r3, #0
+ 274:	e50b300c 	str	r3, [r11, #-12]
+ 278:	ea000013 	b	2cc <test_char+0x70>
+		for (x=0; x<= 79; x++) {
+ 27c:	e3a03000 	mov	r3, #0
+ 280:	e50b3008 	str	r3, [r11, #-8]
+ 284:	ea00000a 	b	2b4 <test_char+0x58>
+			VGA_write_char_ASM(x, y, c++);
+ 288:	e55b300d 	ldrb	r3, [r11, #-13]
+ 28c:	e55b200d 	ldrb	r2, [r11, #-13]
+ 290:	e2822001 	add	r2, r2, #1
+ 294:	e54b200d 	strb	r2, [r11, #-13]
+ 298:	e51b0008 	ldr	r0, [r11, #-8]
+ 29c:	e51b100c 	ldr	r1, [r11, #-12]
+ 2a0:	e1a02003 	mov	r2, r3
+ 2a4:	eb0000da 	bl	614 <VGA_write_char_ASM>
+void test_char() {
+	int x,y;
+	char c = 0;
+	
+	for (y=0; y <= 59; y++) {
+		for (x=0; x<= 79; x++) {
+ 2a8:	e51b3008 	ldr	r3, [r11, #-8]
+ 2ac:	e2833001 	add	r3, r3, #1
+ 2b0:	e50b3008 	str	r3, [r11, #-8]
+ 2b4:	e51b3008 	ldr	r3, [r11, #-8]
+ 2b8:	e353004f 	cmp	r3, #79	; 0x4f
+ 2bc:	dafffff1 	ble	288 <test_char+0x2c>
+
+void test_char() {
+	int x,y;
+	char c = 0;
+	
+	for (y=0; y <= 59; y++) {
+ 2c0:	e51b300c 	ldr	r3, [r11, #-12]
+ 2c4:	e2833001 	add	r3, r3, #1
+ 2c8:	e50b300c 	str	r3, [r11, #-12]
+ 2cc:	e51b300c 	ldr	r3, [r11, #-12]
+ 2d0:	e353003b 	cmp	r3, #59	; 0x3b
+ 2d4:	daffffe8 	ble	27c <test_char+0x20>
+		for (x=0; x<= 79; x++) {
+			VGA_write_char_ASM(x, y, c++);
+		}
+	}
+}
+ 2d8:	e24bd004 	sub	sp, r11, #4
+ 2dc:	e8bd8800 	pop	{r11, pc}
+
+000002e0 <test_byte>:
+
+void test_byte() {
+ 2e0:	e92d4800 	push	{r11, lr}
+ 2e4:	e28db004 	add	r11, sp, #4
+ 2e8:	e24dd010 	sub	sp, sp, #16
+	int x,y;
+	char c = 0;
+ 2ec:	e3a03000 	mov	r3, #0
+ 2f0:	e54b300d 	strb	r3, [r11, #-13]
+	
+	for (y=0; y<= 59; y++) {
+ 2f4:	e3a03000 	mov	r3, #0
+ 2f8:	e50b300c 	str	r3, [r11, #-12]
+ 2fc:	ea000013 	b	350 <test_byte+0x70>
+		for (x=0; x<= 79; x+=3) {
+ 300:	e3a03000 	mov	r3, #0
+ 304:	e50b3008 	str	r3, [r11, #-8]
+ 308:	ea00000a 	b	338 <test_byte+0x58>
+			VGA_write_byte_ASM(x, y, c++);
+ 30c:	e55b300d 	ldrb	r3, [r11, #-13]
+ 310:	e55b200d 	ldrb	r2, [r11, #-13]
+ 314:	e2822001 	add	r2, r2, #1
+ 318:	e54b200d 	strb	r2, [r11, #-13]
+ 31c:	e51b0008 	ldr	r0, [r11, #-8]
+ 320:	e51b100c 	ldr	r1, [r11, #-12]
+ 324:	e1a02003 	mov	r2, r3
+ 328:	eb0000c8 	bl	650 <VGA_write_byte_ASM>
+void test_byte() {
+	int x,y;
+	char c = 0;
+	
+	for (y=0; y<= 59; y++) {
+		for (x=0; x<= 79; x+=3) {
+ 32c:	e51b3008 	ldr	r3, [r11, #-8]
+ 330:	e2833003 	add	r3, r3, #3
+ 334:	e50b3008 	str	r3, [r11, #-8]
+ 338:	e51b3008 	ldr	r3, [r11, #-8]
+ 33c:	e353004f 	cmp	r3, #79	; 0x4f
+ 340:	dafffff1 	ble	30c <test_byte+0x2c>
+
+void test_byte() {
+	int x,y;
+	char c = 0;
+	
+	for (y=0; y<= 59; y++) {
+ 344:	e51b300c 	ldr	r3, [r11, #-12]
+ 348:	e2833001 	add	r3, r3, #1
+ 34c:	e50b300c 	str	r3, [r11, #-12]
+ 350:	e51b300c 	ldr	r3, [r11, #-12]
+ 354:	e353003b 	cmp	r3, #59	; 0x3b
+ 358:	daffffe8 	ble	300 <test_byte+0x20>
+		for (x=0; x<= 79; x+=3) {
+			VGA_write_byte_ASM(x, y, c++);
+		}
+	}
+}
+ 35c:	e24bd004 	sub	sp, r11, #4
+ 360:	e8bd8800 	pop	{r11, pc}
+
+00000364 <test_pixel>:
+
+void test_pixel() {
+ 364:	e92d4800 	push	{r11, lr}
+ 368:	e28db004 	add	r11, sp, #4
+ 36c:	e24dd010 	sub	sp, sp, #16
+	int x,y;
+	unsigned short colour = 0;
+ 370:	e3a03000 	mov	r3, #0
+ 374:	e14b30be 	strh	r3, [r11, #-14]
+	
+	for (y=0; y<=239; y++) {
+ 378:	e3a03000 	mov	r3, #0
+ 37c:	e50b300c 	str	r3, [r11, #-12]
+ 380:	ea000015 	b	3dc <test_pixel+0x78>
+		for (x=0; x<=319; x++) {
+ 384:	e3a03000 	mov	r3, #0
+ 388:	e50b3008 	str	r3, [r11, #-8]
+ 38c:	ea00000b 	b	3c0 <test_pixel+0x5c>
+			VGA_draw_point_ASM(x,y,colour++);
+ 390:	e15b30be 	ldrh	r3, [r11, #-14]
+ 394:	e15b20be 	ldrh	r2, [r11, #-14]
+ 398:	e2822001 	add	r2, r2, #1
+ 39c:	e14b20be 	strh	r2, [r11, #-14]
+ 3a0:	e6bf3073 	sxth	r3, r3
+ 3a4:	e51b0008 	ldr	r0, [r11, #-8]
+ 3a8:	e51b100c 	ldr	r1, [r11, #-12]
+ 3ac:	e1a02003 	mov	r2, r3
+ 3b0:	eb0000be 	bl	6b0 <VGA_draw_point_ASM>
+void test_pixel() {
+	int x,y;
+	unsigned short colour = 0;
+	
+	for (y=0; y<=239; y++) {
+		for (x=0; x<=319; x++) {
+ 3b4:	e51b3008 	ldr	r3, [r11, #-8]
+ 3b8:	e2833001 	add	r3, r3, #1
+ 3bc:	e50b3008 	str	r3, [r11, #-8]
+ 3c0:	e51b2008 	ldr	r2, [r11, #-8]
+ 3c4:	e300313f 	movw	r3, #319	; 0x13f
+ 3c8:	e1520003 	cmp	r2, r3
+ 3cc:	daffffef 	ble	390 <test_pixel+0x2c>
+
+void test_pixel() {
+	int x,y;
+	unsigned short colour = 0;
+	
+	for (y=0; y<=239; y++) {
+ 3d0:	e51b300c 	ldr	r3, [r11, #-12]
+ 3d4:	e2833001 	add	r3, r3, #1
+ 3d8:	e50b300c 	str	r3, [r11, #-12]
+ 3dc:	e51b300c 	ldr	r3, [r11, #-12]
+ 3e0:	e35300ef 	cmp	r3, #239	; 0xef
+ 3e4:	daffffe6 	ble	384 <test_pixel+0x20>
+		for (x=0; x<=319; x++) {
+			VGA_draw_point_ASM(x,y,colour++);
+		}
+	}
+}
+ 3e8:	e24bd004 	sub	sp, r11, #4
+ 3ec:	e8bd8800 	pop	{r11, pc}
+
+000003f0 <main>:
+
+int main() {
+ 3f0:	e92d4800 	push	{r11, lr}
+ 3f4:	e28db004 	add	r11, sp, #4
+ 3f8:	e24dd010 	sub	sp, sp, #16
+	}
+	*/
+
+	// PART 2 KEYBOARD
+
+	int x = 0;										// initialize 
+ 3fc:	e3a03000 	mov	r3, #0
+ 400:	e50b3008 	str	r3, [r11, #-8]
+	int y = 0;
+ 404:	e3a03000 	mov	r3, #0
+ 408:	e50b300c 	str	r3, [r11, #-12]
+	int ps2 = 0;
+ 40c:	e3a03000 	mov	r3, #0
+ 410:	e50b3010 	str	r3, [r11, #-16]
+	char *data = NULL;
+ 414:	e3a03000 	mov	r3, #0
+ 418:	e50b3014 	str	r3, [r11, #-20]	; 0xffffffec
+	
+	VGA_clear_charbuff_ASM();						// Initially clear screen
+ 41c:	eb00005c 	bl	594 <VGA_clear_charbuff_ASM>
+	VGA_clear_pixelbuff_ASM();
+ 420:	eb00006b 	bl	5d4 <VGA_clear_pixelbuff_ASM>
+ 424:	ea000000 	b	42c <main+0x3c>
+		}
+		if (y > 59) {								// Check for y bounds
+			VGA_clear_charbuff_ASM();				// Clear screen when it's filled out
+			y = 0;									// reset y
+		}
+	}
+ 428:	e1a00000 	nop			; (mov r0, r0)
+	char *data = NULL;
+	
+	VGA_clear_charbuff_ASM();						// Initially clear screen
+	VGA_clear_pixelbuff_ASM();
+	while(1) {
+		ps2 = read_PS2_data_ASM(data);				// Get RVALID bit and if it's valid, map PS2 data to data var
+ 42c:	e51b0014 	ldr	r0, [r11, #-20]	; 0xffffffec
+ 430:	eb0000af 	bl	6f4 <read_PS2_data_ASM>
+ 434:	e50b0010 	str	r0, [r11, #-16]
+		if (ps2) {
+ 438:	e51b3010 	ldr	r3, [r11, #-16]
+ 43c:	e3530000 	cmp	r3, #0
+ 440:	0a000008 	beq	468 <main+0x78>
+			VGA_write_byte_ASM(x, y, *data);		// Write to screen
+ 444:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+ 448:	e5d33000 	ldrb	r3, [r3]
+ 44c:	e51b0008 	ldr	r0, [r11, #-8]
+ 450:	e51b100c 	ldr	r1, [r11, #-12]
+ 454:	e1a02003 	mov	r2, r3
+ 458:	eb00007c 	bl	650 <VGA_write_byte_ASM>
+			x += 3;									// increment by 3
+ 45c:	e51b3008 	ldr	r3, [r11, #-8]
+ 460:	e2833003 	add	r3, r3, #3
+ 464:	e50b3008 	str	r3, [r11, #-8]
+		}
+		if (x > 79) {								// Check for x bounds
+ 468:	e51b3008 	ldr	r3, [r11, #-8]
+ 46c:	e353004f 	cmp	r3, #79	; 0x4f
+ 470:	da000004 	ble	488 <main+0x98>
+			x = 0;
+ 474:	e3a03000 	mov	r3, #0
+ 478:	e50b3008 	str	r3, [r11, #-8]
+			y++;
+ 47c:	e51b300c 	ldr	r3, [r11, #-12]
+ 480:	e2833001 	add	r3, r3, #1
+ 484:	e50b300c 	str	r3, [r11, #-12]
+		}
+		if (y > 59) {								// Check for y bounds
+ 488:	e51b300c 	ldr	r3, [r11, #-12]
+ 48c:	e353003b 	cmp	r3, #59	; 0x3b
+ 490:	daffffe4 	ble	428 <main+0x38>
+			VGA_clear_charbuff_ASM();				// Clear screen when it's filled out
+ 494:	eb00003e 	bl	594 <VGA_clear_charbuff_ASM>
+			y = 0;									// reset y
+ 498:	e3a03000 	mov	r3, #0
+ 49c:	e50b300c 	str	r3, [r11, #-12]
+		}
+	}
+ 4a0:	eaffffe0 	b	428 <main+0x38>
+
+000004a4 <read_PB_data_ASM>:
+	.global disable_PB_INT_ASM
+	
+	.global config_PB_ASM
+
+read_PB_data_ASM:
+	PUSH {R1}
+ 4a4:	e52d1004 	push	{r1}		; (str r1, [sp, #-4]!)
+	LDR R1, =BT_BASE
+ 4a8:	e59f10c8 	ldr	r1, [pc, #200]	; 578 <config_PB_ASM+0x18>
+	LDR R0, [R1]
+ 4ac:	e5910000 	ldr	r0, [r1]
+	POP {R1}
+ 4b0:	e49d1004 	pop	{r1}		; (ldr r1, [sp], #4)
+	BX LR
+ 4b4:	e12fff1e 	bx	lr
+
+000004b8 <PB_data_is_pressed_ASM>:
+
+PB_data_is_pressed_ASM:
+	PUSH {R1-R3}
+ 4b8:	e92d000e 	push	{r1, r2, r3}
+	LDR R1, =BT_BASE // R1 contains base address of pushbutton parallel port
+ 4bc:	e59f10b4 	ldr	r1, [pc, #180]	; 578 <config_PB_ASM+0x18>
+	LDR R2, [R1] // R2 contains buttons within pushbutton parallel port that are on
+ 4c0:	e5912000 	ldr	r2, [r1]
+	AND R3, R2, R0 // R0 contains whose pressed status you wish to check
+ 4c4:	e0023000 	and	r3, r2, r0
+	CMP R3, R0
+ 4c8:	e1530000 	cmp	r3, r0
+	MOVEQ R0, #1 // return true if button is pressed
+ 4cc:	03a00001 	moveq	r0, #1
+	MOVNE R0, #0 // return false if button is not pressed
+ 4d0:	13a00000 	movne	r0, #0
+	POP {R1-R3}
+ 4d4:	e8bd000e 	pop	{r1, r2, r3}
+	BX LR
+ 4d8:	e12fff1e 	bx	lr
+
+000004dc <read_PB_edgecap_ASM>:
+
+read_PB_edgecap_ASM:
+	PUSH {R1}
+ 4dc:	e52d1004 	push	{r1}		; (str r1, [sp, #-4]!)
+	LDR R1, =EDGE_CAP
+ 4e0:	e59f1094 	ldr	r1, [pc, #148]	; 57c <config_PB_ASM+0x1c>
+	LDR R0, [R1]
+ 4e4:	e5910000 	ldr	r0, [r1]
+	POP {R1}
+ 4e8:	e49d1004 	pop	{r1}		; (ldr r1, [sp], #4)
+	BX LR
+ 4ec:	e12fff1e 	bx	lr
+
+000004f0 <PB_edgecap_is_pressed_ASM>:
+
+PB_edgecap_is_pressed_ASM:
+	PUSH {R1-R3}
+ 4f0:	e92d000e 	push	{r1, r2, r3}
+	LDR R1, =EDGE_CAP // R1 contains edge capture address of pushbutton parallel port
+ 4f4:	e59f1080 	ldr	r1, [pc, #128]	; 57c <config_PB_ASM+0x1c>
+	LDR R2, [R1] // R2 contains value stored within edge capture address
+ 4f8:	e5912000 	ldr	r2, [r1]
+	AND R3, R2, R0 // R0 contains whose edge capture status you wish to check
+ 4fc:	e0023000 	and	r3, r2, r0
+	CMP R3, R0
+ 500:	e1530000 	cmp	r3, r0
+	MOVEQ R0, #1 // return true if edge capture bit of that button is on
+ 504:	03a00001 	moveq	r0, #1
+	MOVNE R0, #0 // return true if edge capture bit of that button is off
+ 508:	13a00000 	movne	r0, #0
+	POP {R1-R3}
+ 50c:	e8bd000e 	pop	{r1, r2, r3}
+	BX LR
+ 510:	e12fff1e 	bx	lr
+
+00000514 <PB_clear_edgecap_ASM>:
+
+PB_clear_edgecap_ASM:
+	PUSH {R1-R2}
+ 514:	e92d0006 	push	{r1, r2}
+	LDR R1, =EDGE_CAP // R1 contains address of edge cap register
+ 518:	e59f105c 	ldr	r1, [pc, #92]	; 57c <config_PB_ASM+0x1c>
+	BIC R2, R1, R0 // R0 contains button whose edge cap you want to clear (complemented); R2 contains new value to be stored in edge cap register
+ 51c:	e1c12000 	bic	r2, r1, r0
+	STR R2, [R1] // update edge capture register
+ 520:	e5812000 	str	r2, [r1]
+	POP {R1-R2}
+ 524:	e8bd0006 	pop	{r1, r2}
+	BX LR
+ 528:	e12fff1e 	bx	lr
+
+0000052c <enable_PB_INT_ASM>:
+	
+
+enable_PB_INT_ASM:
+	PUSH {R1-R2}
+ 52c:	e92d0006 	push	{r1, r2}
+	LDR R1, =INT_BASE
+ 530:	e59f1048 	ldr	r1, [pc, #72]	; 580 <config_PB_ASM+0x20>
+	LDR R2, [R1] // R2 contains value of interrupt mask register
+ 534:	e5912000 	ldr	r2, [r1]
+	ORR R2, R2, R0 // R0 contains button whose interrupt you want to enable; R2 contains new value to be stored in interrupt mask register
+ 538:	e1822000 	orr	r2, r2, r0
+	STR R2, [R1] // update interrupt mask register
+ 53c:	e5812000 	str	r2, [r1]
+	POP {R1-R2}
+ 540:	e8bd0006 	pop	{r1, r2}
+	BX LR
+ 544:	e12fff1e 	bx	lr
+
+00000548 <disable_PB_INT_ASM>:
+
+disable_PB_INT_ASM:
+	PUSH {R1-R2}
+ 548:	e92d0006 	push	{r1, r2}
+	LDR R1, =INT_BASE // R1 contains address of interrupt mask register
+ 54c:	e59f102c 	ldr	r1, [pc, #44]	; 580 <config_PB_ASM+0x20>
+	BIC R2, R1, R0 // R0 contains button whose edge cap you want to clear (complemented); R2 contains new value to be stored in edge cap register
+ 550:	e1c12000 	bic	r2, r1, r0
+	STR R2, [R1] // update interrupt mask register
+ 554:	e5812000 	str	r2, [r1]
+	POP {R1-R2}
+ 558:	e8bd0006 	pop	{r1, r2}
+	BX LR
+ 55c:	e12fff1e 	bx	lr
+
+00000560 <config_PB_ASM>:
+
+config_PB_ASM:
+	PUSH {R1-R2}
+ 560:	e92d0006 	push	{r1, r2}
+	LDR R1, =INT_BASE // R1 contains address of interrupt mask register
+ 564:	e59f1014 	ldr	r1, [pc, #20]	; 580 <config_PB_ASM+0x20>
+	MOV R2, #0XF //set interrupt mask bits
+ 568:	e3a0200f 	mov	r2, #15
+	STR R2, [R1]
+ 56c:	e5812000 	str	r2, [r1]
+	PUSH {R1-R2}
+ 570:	e92d0006 	push	{r1, r2}
+	BX LR
+ 574:	e12fff1e 	bx	lr
+	
+	.global config_PB_ASM
+
+read_PB_data_ASM:
+	PUSH {R1}
+	LDR R1, =BT_BASE
+ 578:	ff200050 	.word	0xff200050
+	POP {R1-R3}
+	BX LR
+
+read_PB_edgecap_ASM:
+	PUSH {R1}
+	LDR R1, =EDGE_CAP
+ 57c:	ff20005c 	.word	0xff20005c
+	BX LR
+	
+
+enable_PB_INT_ASM:
+	PUSH {R1-R2}
+	LDR R1, =INT_BASE
+ 580:	ff200058 	.word	0xff200058
+
+00000584 <read_slider_switches_ASM>:
+.text
+	.equ SW_BASE, 0xFF200040
+	.global read_slider_switches_ASM
+
+read_slider_switches_ASM:
+	LDR R1, = SW_BASE 
+ 584:	e59f1004 	ldr	r1, [pc, #4]	; 590 <read_slider_switches_ASM+0xc>
+	LDR R0, [R1] 
+ 588:	e5910000 	ldr	r0, [r1]
+	BX LR
+ 58c:	e12fff1e 	bx	lr
+.text
+	.equ SW_BASE, 0xFF200040
+	.global read_slider_switches_ASM
+
+read_slider_switches_ASM:
+	LDR R1, = SW_BASE 
+ 590:	ff200040 	.word	0xff200040
+
+00000594 <VGA_clear_charbuff_ASM>:
+	.global VGA_write_char_ASM
+	.global VGA_write_byte_ASM
+	.global VGA_draw_point_ASM
+
+VGA_clear_charbuff_ASM:
+	PUSH {R4-R12} 				//save the state of the system
+ 594:	e92d1ff0 	push	{r4, r5, r6, r7, r8, r9, r10, r11, r12}
+	MOV R2, #0
+ 598:	e3a02000 	mov	r2, #0
+	LDR R3, =VGA_charbuff
+ 59c:	e3a034c9 	mov	r3, #-922746880	; 0xc9000000
+	MOV R0, #0
+ 5a0:	e3a00000 	mov	r0, #0
+
+000005a4 <X_CHAR_LOOP>:
+
+X_CHAR_LOOP: 
+	MOV R1, #0
+ 5a4:	e3a01000 	mov	r1, #0
+	ADD R4, R3, R0			// Iterate x-axis
+ 5a8:	e0834000 	add	r4, r3, r0
+
+000005ac <Y_CHAR_LOOP>:
+
+Y_CHAR_LOOP: 
+	ADD R5, R4, R1, LSL #7	// Iterate y-axis
+ 5ac:	e0845381 	add	r5, r4, r1, lsl #7
+	
+	STRB R2, [R5]			// Clear specific byte
+ 5b0:	e5c52000 	strb	r2, [r5]
+	
+	ADD R1, R1, #1			// increment y counter
+ 5b4:	e2811001 	add	r1, r1, #1
+	CMP R1, #60				// check if it's at the bottom of the screen
+ 5b8:	e351003c 	cmp	r1, #60	; 0x3c
+	BLT Y_CHAR_LOOP
+ 5bc:	bafffffa 	blt	5ac <Y_CHAR_LOOP>
+	
+	ADD R0, R0, #1			// increment x counter	
+ 5c0:	e2800001 	add	r0, r0, #1
+	CMP R0, #80				// check if it's at the right of the screen
+ 5c4:	e3500050 	cmp	r0, #80	; 0x50
+	BLT X_CHAR_LOOP
+ 5c8:	bafffff5 	blt	5a4 <X_CHAR_LOOP>
+
+	POP {R4-R5}
+ 5cc:	e8bd0030 	pop	{r4, r5}
+	BX LR
+ 5d0:	e12fff1e 	bx	lr
+
+000005d4 <VGA_clear_pixelbuff_ASM>:
+
+
+VGA_clear_pixelbuff_ASM:
+	PUSH {R4-R5}	
+ 5d4:	e92d0030 	push	{r4, r5}
+	MOV R2, #0
+ 5d8:	e3a02000 	mov	r2, #0
+	LDR R3, =VGA_pixelbuff
+ 5dc:	e3a03332 	mov	r3, #-939524096	; 0xc8000000
+	MOV R0, #0						// X counter
+ 5e0:	e3a00000 	mov	r0, #0
+
+000005e4 <X_PIXEL_LOOP>:
+
+X_PIXEL_LOOP:
+	MOV R1, #0						// Y counter
+ 5e4:	e3a01000 	mov	r1, #0
+	ADD R4, R3, R0, LSL #1			// Iterate x-axis
+ 5e8:	e0834080 	add	r4, r3, r0, lsl #1
+
+000005ec <Y_PIXEL_LOOP>:
+Y_PIXEL_LOOP:
+	ADD R5, R4, R1, LSL #10			// Iterate y-axis
+ 5ec:	e0845501 	add	r5, r4, r1, lsl #10
+	
+	STRH R2, [R5]					// Clear specific pixel
+ 5f0:	e1c520b0 	strh	r2, [r5]
+	
+	ADD R1, R1, #1					// Increment y
+ 5f4:	e2811001 	add	r1, r1, #1
+	CMP R1, #240					// Check if we're at the bottom of the screen
+ 5f8:	e35100f0 	cmp	r1, #240	; 0xf0
+	BLT Y_PIXEL_LOOP				// If not, continue incrementing y
+ 5fc:	bafffffa 	blt	5ec <Y_PIXEL_LOOP>
+	
+	ADD R0, R0, #1					// If yes, increment x
+ 600:	e2800001 	add	r0, r0, #1
+	CMP R0, #320					// Check if we're done clearing
+ 604:	e3500d05 	cmp	r0, #320	; 0x140
+	BLT X_PIXEL_LOOP
+ 608:	bafffff5 	blt	5e4 <X_PIXEL_LOOP>
+
+	POP {R4-R5}
+ 60c:	e8bd0030 	pop	{r4, r5}
+	BX LR
+ 610:	e12fff1e 	bx	lr
+
+00000614 <VGA_write_char_ASM>:
+
+VGA_write_char_ASM:	
+	PUSH {R3-R7}
+ 614:	e92d00f8 	push	{r3, r4, r5, r6, r7}
+	CMP R0, #0			// Check x and y for negative number inputs
+ 618:	e3500000 	cmp	r0, #0
+	BXLT LR
+ 61c:	b12fff1e 	bxlt	lr
+	CMP R1, #0
+ 620:	e3510000 	cmp	r1, #0
+	BXLT LR
+ 624:	b12fff1e 	bxlt	lr
+	CMP R0, #79			// Check for out of bounds input
+ 628:	e350004f 	cmp	r0, #79	; 0x4f
+	BXGT LR
+ 62c:	c12fff1e 	bxgt	lr
+	CMP R1, #59
+ 630:	e351003b 	cmp	r1, #59	; 0x3b
+	BXGT LR
+ 634:	c12fff1e 	bxgt	lr
+
+	LDR R3, =VGA_charbuff		// Set base address
+ 638:	e3a034c9 	mov	r3, #-922746880	; 0xc9000000
+	ADD R3, R3, R0				// Set x address
+ 63c:	e0833000 	add	r3, r3, r0
+	ADD R3, R3, R1, LSL #7		// Set y address
+ 640:	e0833381 	add	r3, r3, r1, lsl #7
+	STRB R2, [R3]				// Store input to that location
+ 644:	e5c32000 	strb	r2, [r3]
+	POP {R3-R7}
+ 648:	e8bd00f8 	pop	{r3, r4, r5, r6, r7}
+	BX LR
+ 64c:	e12fff1e 	bx	lr
+
+00000650 <VGA_write_byte_ASM>:
+
+VGA_write_byte_ASM:
+	PUSH {R3-R7}
+ 650:	e92d00f8 	push	{r3, r4, r5, r6, r7}
+	CMP R0, #0					// Check x and y for negative inputs
+ 654:	e3500000 	cmp	r0, #0
+	BXLT LR
+ 658:	b12fff1e 	bxlt	lr
+	CMP R1, #0
+ 65c:	e3510000 	cmp	r1, #0
+	BXLT LR
+ 660:	b12fff1e 	bxlt	lr
+	CMP R0, #78					// Check for out of bound inputs
+ 664:	e350004e 	cmp	r0, #78	; 0x4e
+	BXGT LR						// 78 because there must be enough space to write 2 char
+ 668:	c12fff1e 	bxgt	lr
+	CMP R1, #59
+ 66c:	e351003b 	cmp	r1, #59	; 0x3b
+	BXGT LR
+ 670:	c12fff1e 	bxgt	lr
+	
+	LDR R3, =VGA_charbuff			// Set base address
+ 674:	e3a034c9 	mov	r3, #-922746880	; 0xc9000000
+	ADD R3, R3, R0					// Set X-address and add it to base address					
+ 678:	e0833000 	add	r3, r3, r0
+	ADD R3, R3, R1, LSL #7			// Add Y-address
+ 67c:	e0833381 	add	r3, r3, r1, lsl #7
+									// R3 now holds the address of where we want to write
+	LSR R4, R2, #4					// Get most significant hex					
+ 680:	e1a04222 	lsr	r4, r2, #4
+	AND R5, R2, #0x0F				// Get least significant hex
+ 684:	e202500f 	and	r5, r2, #15
+	
+	CMP R4, #9						// Check if input is A,B,C,D,E,F
+ 688:	e3540009 	cmp	r4, #9
+	ADDGT R4, R4, #7				// Add 7 so that the ASCII value is right
+ 68c:	c2844007 	addgt	r4, r4, #7
+	CMP R5, #9						
+ 690:	e3550009 	cmp	r5, #9
+	ADDGT R5, R5, #7
+ 694:	c2855007 	addgt	r5, r5, #7
+	ADD R4, R4, #48					// Add base address of 0 (ASCII value)
+ 698:	e2844030 	add	r4, r4, #48	; 0x30
+	ADD R5, R5, #48
+ 69c:	e2855030 	add	r5, r5, #48	; 0x30
+	
+	STRB R4, [R3]					// Store most significant hex at input location
+ 6a0:	e5c34000 	strb	r4, [r3]
+	STRB R5, [R3, #1]				// Store least significant hex at input location + 1
+ 6a4:	e5c35001 	strb	r5, [r3, #1]
+	POP {R3-R7}
+ 6a8:	e8bd00f8 	pop	{r3, r4, r5, r6, r7}
+	BX LR
+ 6ac:	e12fff1e 	bx	lr
+
+000006b0 <VGA_draw_point_ASM>:
+
+VGA_draw_point_ASM:
+	PUSH {R3}
+ 6b0:	e52d3004 	push	{r3}		; (str r3, [sp, #-4]!)
+	CMP R0, #0					// Check x and y for negative inputs
+ 6b4:	e3500000 	cmp	r0, #0
+	BXLT LR
+ 6b8:	b12fff1e 	bxlt	lr
+	CMP R1, #0
+ 6bc:	e3510000 	cmp	r1, #0
+	BXLT LR
+ 6c0:	b12fff1e 	bxlt	lr
+	LDR R3, =319				// Must use LDR since 319 is too high
+ 6c4:	e59f3024 	ldr	r3, [pc, #36]	; 6f0 <VGA_draw_point_ASM+0x40>
+	CMP R0, R3					// Check for out of bounds input
+ 6c8:	e1500003 	cmp	r0, r3
+	BXGT LR
+ 6cc:	c12fff1e 	bxgt	lr
+	CMP R1, #239
+ 6d0:	e35100ef 	cmp	r1, #239	; 0xef
+	BXGT LR
+ 6d4:	c12fff1e 	bxgt	lr
+	
+	LDR R3, =VGA_pixelbuff		// Set base address
+ 6d8:	e3a03332 	mov	r3, #-939524096	; 0xc8000000
+	ADD R3, R3, R0, LSL #1		// Set x address
+ 6dc:	e0833080 	add	r3, r3, r0, lsl #1
+	ADD R3, R3, R1, LSL #10		// Set y address
+ 6e0:	e0833501 	add	r3, r3, r1, lsl #10
+	STRH R2, [R3]				// Write to location
+ 6e4:	e1c320b0 	strh	r2, [r3]
+	POP {R3}
+ 6e8:	e49d3004 	pop	{r3}		; (ldr r3, [sp], #4)
+	BX LR
+ 6ec:	e12fff1e 	bx	lr
+	PUSH {R3}
+	CMP R0, #0					// Check x and y for negative inputs
+	BXLT LR
+	CMP R1, #0
+	BXLT LR
+	LDR R3, =319				// Must use LDR since 319 is too high
+ 6f0:	0000013f 	.word	0x0000013f
+
+000006f4 <read_PS2_data_ASM>:
+.text
+	.equ PS2_Data, 0xFF200100
+	.global read_PS2_data_ASM
+
+read_PS2_data_ASM:
+	PUSH {R1-R4} 
+ 6f4:	e92d001e 	push	{r1, r2, r3, r4}
+	LDR R1, =PS2_Data				// Load R1 with PS2 data address
+ 6f8:	e59f1024 	ldr	r1, [pc, #36]	; 724 <read_PS2_data_ASM+0x30>
+	LDR R3, [R1]					// R3 holds value of PS2 PS2_Data
+ 6fc:	e5913000 	ldr	r3, [r1]
+	ANDS R2, R3, #0x00008000		// Get the RVALID bit
+ 700:	e2132902 	ands	r2, r3, #32768	; 0x8000
+	MOVEQ R0, #0					// If it's 0, return 0
+ 704:	03a00000 	moveq	r0, #0
+	POPEQ {R1-R4}
+ 708:	08bd001e 	popeq	{r1, r2, r3, r4}
+	BXEQ LR
+ 70c:	012fff1e 	bxeq	lr
+
+	AND R2, R3, #0x000000FF			// Get data from PS2 data address
+ 710:	e20320ff 	and	r2, r3, #255	; 0xff
+	STR R2, [R0]					// Store data to input pointer value
+ 714:	e5802000 	str	r2, [r0]
+	MOV R0, #1						// return 1
+ 718:	e3a00001 	mov	r0, #1
+	POP {R1-R4}
+ 71c:	e8bd001e 	pop	{r1, r2, r3, r4}
+	BX LR  
+ 720:	e12fff1e 	bx	lr
+	.equ PS2_Data, 0xFF200100
+	.global read_PS2_data_ASM
+
+read_PS2_data_ASM:
+	PUSH {R1-R4} 
+	LDR R1, =PS2_Data				// Load R1 with PS2 data address
+ 724:	ff200100 	.word	0xff200100
+
+00000728 <atexit>:
+ 728:	e1a01000 	mov	r1, r0
+ 72c:	e3a00000 	mov	r0, #0
+ 730:	e92d4008 	push	{r3, lr}
+ 734:	e1a02000 	mov	r2, r0
+ 738:	e1a03000 	mov	r3, r0
+ 73c:	eb00000e 	bl	77c <__register_exitproc>
+ 740:	e8bd4008 	pop	{r3, lr}
+ 744:	e12fff1e 	bx	lr
+
+00000748 <exit>:
+ 748:	e92d4008 	push	{r3, lr}
+ 74c:	e3a01000 	mov	r1, #0
+ 750:	e1a04000 	mov	r4, r0
+ 754:	eb000045 	bl	870 <__call_exitprocs>
+ 758:	e59f3018 	ldr	r3, [pc, #24]	; 778 <exit+0x30>
+ 75c:	e5930000 	ldr	r0, [r3]
+ 760:	e590303c 	ldr	r3, [r0, #60]	; 0x3c
+ 764:	e3530000 	cmp	r3, #0
+ 768:	11a0e00f 	movne	lr, pc
+ 76c:	112fff13 	bxne	r3
+ 770:	e1a00004 	mov	r0, r4
+ 774:	eb0000c9 	bl	aa0 <_exit>
+ 778:	00000b60 	.word	0x00000b60
+
+0000077c <__register_exitproc>:
+ 77c:	e59fc0e4 	ldr	r12, [pc, #228]	; 868 <__register_exitproc+0xec>
+ 780:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 784:	e59c4000 	ldr	r4, [r12]
+ 788:	e594c148 	ldr	r12, [r4, #328]	; 0x148
+ 78c:	e35c0000 	cmp	r12, #0
+ 790:	0284cf53 	addeq	r12, r4, #332	; 0x14c
+ 794:	e59c5004 	ldr	r5, [r12, #4]
+ 798:	0584c148 	streq	r12, [r4, #328]	; 0x148
+ 79c:	e355001f 	cmp	r5, #31
+ 7a0:	e24dd010 	sub	sp, sp, #16
+ 7a4:	e1a06000 	mov	r6, r0
+ 7a8:	da000015 	ble	804 <__register_exitproc+0x88>
+ 7ac:	e59f00b8 	ldr	r0, [pc, #184]	; 86c <__register_exitproc+0xf0>
+ 7b0:	e3500000 	cmp	r0, #0
+ 7b4:	1a000001 	bne	7c0 <__register_exitproc+0x44>
+ 7b8:	e3e00000 	mvn	r0, #0
+ 7bc:	ea000018 	b	824 <__register_exitproc+0xa8>
+ 7c0:	e3a00e19 	mov	r0, #400	; 0x190
+ 7c4:	e58d100c 	str	r1, [sp, #12]
+ 7c8:	e58d2008 	str	r2, [sp, #8]
+ 7cc:	e58d3004 	str	r3, [sp, #4]
+ 7d0:	e320f000 	nop	{0}
+ 7d4:	e250c000 	subs	r12, r0, #0
+ 7d8:	e59d100c 	ldr	r1, [sp, #12]
+ 7dc:	e59d2008 	ldr	r2, [sp, #8]
+ 7e0:	e59d3004 	ldr	r3, [sp, #4]
+ 7e4:	0afffff3 	beq	7b8 <__register_exitproc+0x3c>
+ 7e8:	e5945148 	ldr	r5, [r4, #328]	; 0x148
+ 7ec:	e3a00000 	mov	r0, #0
+ 7f0:	e58c0004 	str	r0, [r12, #4]
+ 7f4:	e58c5000 	str	r5, [r12]
+ 7f8:	e584c148 	str	r12, [r4, #328]	; 0x148
+ 7fc:	e58c0188 	str	r0, [r12, #392]	; 0x188
+ 800:	e58c018c 	str	r0, [r12, #396]	; 0x18c
+ 804:	e3560000 	cmp	r6, #0
+ 808:	e59c4004 	ldr	r4, [r12, #4]
+ 80c:	1a000007 	bne	830 <__register_exitproc+0xb4>
+ 810:	e2843002 	add	r3, r4, #2
+ 814:	e2844001 	add	r4, r4, #1
+ 818:	e78c1103 	str	r1, [r12, r3, lsl #2]
+ 81c:	e58c4004 	str	r4, [r12, #4]
+ 820:	e3a00000 	mov	r0, #0
+ 824:	e28dd010 	add	sp, sp, #16
+ 828:	e8bd41f0 	pop	{r4, r5, r6, r7, r8, lr}
+ 82c:	e12fff1e 	bx	lr
+ 830:	e3a00001 	mov	r0, #1
+ 834:	e1a00410 	lsl	r0, r0, r4
+ 838:	e08c8104 	add	r8, r12, r4, lsl #2
+ 83c:	e3560002 	cmp	r6, #2
+ 840:	e59c7188 	ldr	r7, [r12, #392]	; 0x188
+ 844:	e5883108 	str	r3, [r8, #264]	; 0x108
+ 848:	059c318c 	ldreq	r3, [r12, #396]	; 0x18c
+ 84c:	e1877000 	orr	r7, r7, r0
+ 850:	01830000 	orreq	r0, r3, r0
+ 854:	e1a05008 	mov	r5, r8
+ 858:	e5882088 	str	r2, [r8, #136]	; 0x88
+ 85c:	e58c7188 	str	r7, [r12, #392]	; 0x188
+ 860:	058c018c 	streq	r0, [r12, #396]	; 0x18c
+ 864:	eaffffe9 	b	810 <__register_exitproc+0x94>
+ 868:	00000b60 	.word	0x00000b60
+ 86c:	00000000 	.word	0x00000000
+
+00000870 <__call_exitprocs>:
+ 870:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+ 874:	e59f3168 	ldr	r3, [pc, #360]	; 9e4 <__call_exitprocs+0x174>
+ 878:	e5933000 	ldr	r3, [r3]
+ 87c:	e24dd014 	sub	sp, sp, #20
+ 880:	e58d3004 	str	r3, [sp, #4]
+ 884:	e2833f52 	add	r3, r3, #328	; 0x148
+ 888:	e58d0008 	str	r0, [sp, #8]
+ 88c:	e58d300c 	str	r3, [sp, #12]
+ 890:	e1a07001 	mov	r7, r1
+ 894:	e3a08001 	mov	r8, #1
+ 898:	e59d3004 	ldr	r3, [sp, #4]
+ 89c:	e5936148 	ldr	r6, [r3, #328]	; 0x148
+ 8a0:	e3560000 	cmp	r6, #0
+ 8a4:	e59db00c 	ldr	r11, [sp, #12]
+ 8a8:	0a000033 	beq	97c <__call_exitprocs+0x10c>
+ 8ac:	e5965004 	ldr	r5, [r6, #4]
+ 8b0:	e2554001 	subs	r4, r5, #1
+ 8b4:	5286a088 	addpl	r10, r6, #136	; 0x88
+ 8b8:	5285501f 	addpl	r5, r5, #31
+ 8bc:	508a5105 	addpl	r5, r10, r5, lsl #2
+ 8c0:	5a000007 	bpl	8e4 <__call_exitprocs+0x74>
+ 8c4:	ea000029 	b	970 <__call_exitprocs+0x100>
+ 8c8:	e5953000 	ldr	r3, [r5]
+ 8cc:	e1530007 	cmp	r3, r7
+ 8d0:	0a000005 	beq	8ec <__call_exitprocs+0x7c>
+ 8d4:	e2444001 	sub	r4, r4, #1
+ 8d8:	e3740001 	cmn	r4, #1
+ 8dc:	e2455004 	sub	r5, r5, #4
+ 8e0:	0a000022 	beq	970 <__call_exitprocs+0x100>
+ 8e4:	e3570000 	cmp	r7, #0
+ 8e8:	1afffff6 	bne	8c8 <__call_exitprocs+0x58>
+ 8ec:	e5963004 	ldr	r3, [r6, #4]
+ 8f0:	e06a2005 	rsb	r2, r10, r5
+ 8f4:	e2433001 	sub	r3, r3, #1
+ 8f8:	e0862002 	add	r2, r6, r2
+ 8fc:	e1530004 	cmp	r3, r4
+ 900:	e5123078 	ldr	r3, [r2, #-120]	; 0xffffff88
+ 904:	13a01000 	movne	r1, #0
+ 908:	05864004 	streq	r4, [r6, #4]
+ 90c:	15021078 	strne	r1, [r2, #-120]	; 0xffffff88
+ 910:	e3530000 	cmp	r3, #0
+ 914:	0affffee 	beq	8d4 <__call_exitprocs+0x64>
+ 918:	e1a02418 	lsl	r2, r8, r4
+ 91c:	e5961188 	ldr	r1, [r6, #392]	; 0x188
+ 920:	e1120001 	tst	r2, r1
+ 924:	e5969004 	ldr	r9, [r6, #4]
+ 928:	0a000016 	beq	988 <__call_exitprocs+0x118>
+ 92c:	e596118c 	ldr	r1, [r6, #396]	; 0x18c
+ 930:	e1120001 	tst	r2, r1
+ 934:	1a000016 	bne	994 <__call_exitprocs+0x124>
+ 938:	e59d0008 	ldr	r0, [sp, #8]
+ 93c:	e5151080 	ldr	r1, [r5, #-128]	; 0xffffff80
+ 940:	e1a0e00f 	mov	lr, pc
+ 944:	e12fff13 	bx	r3
+ 948:	e5963004 	ldr	r3, [r6, #4]
+ 94c:	e1530009 	cmp	r3, r9
+ 950:	1affffd0 	bne	898 <__call_exitprocs+0x28>
+ 954:	e59b3000 	ldr	r3, [r11]
+ 958:	e1530006 	cmp	r3, r6
+ 95c:	1affffcd 	bne	898 <__call_exitprocs+0x28>
+ 960:	e2444001 	sub	r4, r4, #1
+ 964:	e3740001 	cmn	r4, #1
+ 968:	e2455004 	sub	r5, r5, #4
+ 96c:	1affffdc 	bne	8e4 <__call_exitprocs+0x74>
+ 970:	e59f1070 	ldr	r1, [pc, #112]	; 9e8 <__call_exitprocs+0x178>
+ 974:	e3510000 	cmp	r1, #0
+ 978:	1a000009 	bne	9a4 <__call_exitprocs+0x134>
+ 97c:	e28dd014 	add	sp, sp, #20
+ 980:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+ 984:	e12fff1e 	bx	lr
+ 988:	e1a0e00f 	mov	lr, pc
+ 98c:	e12fff13 	bx	r3
+ 990:	eaffffec 	b	948 <__call_exitprocs+0xd8>
+ 994:	e5150080 	ldr	r0, [r5, #-128]	; 0xffffff80
+ 998:	e1a0e00f 	mov	lr, pc
+ 99c:	e12fff13 	bx	r3
+ 9a0:	eaffffe8 	b	948 <__call_exitprocs+0xd8>
+ 9a4:	e5963004 	ldr	r3, [r6, #4]
+ 9a8:	e3530000 	cmp	r3, #0
+ 9ac:	e5963000 	ldr	r3, [r6]
+ 9b0:	1a000008 	bne	9d8 <__call_exitprocs+0x168>
+ 9b4:	e3530000 	cmp	r3, #0
+ 9b8:	0a000006 	beq	9d8 <__call_exitprocs+0x168>
+ 9bc:	e1a00006 	mov	r0, r6
+ 9c0:	e58b3000 	str	r3, [r11]
+ 9c4:	e320f000 	nop	{0}
+ 9c8:	e59b6000 	ldr	r6, [r11]
+ 9cc:	e3560000 	cmp	r6, #0
+ 9d0:	1affffb5 	bne	8ac <__call_exitprocs+0x3c>
+ 9d4:	eaffffe8 	b	97c <__call_exitprocs+0x10c>
+ 9d8:	e1a0b006 	mov	r11, r6
+ 9dc:	e1a06003 	mov	r6, r3
+ 9e0:	eafffff9 	b	9cc <__call_exitprocs+0x15c>
+ 9e4:	00000b60 	.word	0x00000b60
+ 9e8:	00000000 	.word	0x00000000
+
+000009ec <register_fini>:
+ 9ec:	e92d4008 	push	{r3, lr}
+ 9f0:	e59f3010 	ldr	r3, [pc, #16]	; a08 <register_fini+0x1c>
+ 9f4:	e3530000 	cmp	r3, #0
+ 9f8:	159f000c 	ldrne	r0, [pc, #12]	; a0c <register_fini+0x20>
+ 9fc:	1bffff49 	blne	728 <atexit>
+ a00:	e8bd4008 	pop	{r3, lr}
+ a04:	e12fff1e 	bx	lr
+ a08:	00000b88 	.word	0x00000b88
+ a0c:	00000a10 	.word	0x00000a10
+
+00000a10 <__libc_fini_array>:
+ a10:	e92d4038 	push	{r3, r4, r5, lr}
+ a14:	e59f5030 	ldr	r5, [pc, #48]	; a4c <__libc_fini_array+0x3c>
+ a18:	e59f4030 	ldr	r4, [pc, #48]	; a50 <__libc_fini_array+0x40>
+ a1c:	e0654004 	rsb	r4, r5, r4
+ a20:	e1b04144 	asrs	r4, r4, #2
+ a24:	10855104 	addne	r5, r5, r4, lsl #2
+ a28:	0a000004 	beq	a40 <__libc_fini_array+0x30>
+ a2c:	e5353004 	ldr	r3, [r5, #-4]!
+ a30:	e1a0e00f 	mov	lr, pc
+ a34:	e12fff13 	bx	r3
+ a38:	e2544001 	subs	r4, r4, #1
+ a3c:	1afffffa 	bne	a2c <__libc_fini_array+0x1c>
+ a40:	eb000050 	bl	b88 <__libc_fini>
+ a44:	e8bd4038 	pop	{r3, r4, r5, lr}
+ a48:	e12fff1e 	bx	lr
+ a4c:	00000ba0 	.word	0x00000ba0
+ a50:	00000ba4 	.word	0x00000ba4
+
+00000a54 <__cs3_premain>:
+ a54:	e92d4008 	push	{r3, lr}
+ a58:	eb00001d 	bl	ad4 <__libc_init_array>
+ a5c:	e59f3030 	ldr	r3, [pc, #48]	; a94 <__cs3_premain+0x40>
+ a60:	e3530000 	cmp	r3, #0
+ a64:	15930000 	ldrne	r0, [r3]
+ a68:	01a00003 	moveq	r0, r3
+ a6c:	e59f3024 	ldr	r3, [pc, #36]	; a98 <__cs3_premain+0x44>
+ a70:	e3530000 	cmp	r3, #0
+ a74:	15931000 	ldrne	r1, [r3]
+ a78:	01a01003 	moveq	r1, r3
+ a7c:	e3a02000 	mov	r2, #0
+ a80:	ebfffe5a 	bl	3f0 <main>
+ a84:	e59f3010 	ldr	r3, [pc, #16]	; a9c <__cs3_premain+0x48>
+ a88:	e3530000 	cmp	r3, #0
+ a8c:	1bffff2d 	blne	748 <exit>
+ a90:	eafffffe 	b	a90 <__cs3_premain+0x3c>
+	...
+ a9c:	00000748 	.word	0x00000748
+
+00000aa0 <_exit>:
+ aa0:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ aa4:	e3a00018 	mov	r0, #24
+ aa8:	e59f1004 	ldr	r1, [pc, #4]	; ab4 <_exit+0x14>
+ aac:	ef123456 	svc	0x00123456
+ ab0:	eafffffe 	b	ab0 <_exit+0x10>
+ ab4:	00020026 	.word	0x00020026
+
+00000ab8 <__cs3_isr_interrupt>:
+ ab8:	eafffffe 	b	ab8 <__cs3_isr_interrupt>
+
+00000abc <__cs3_isr_undef>:
+ abc:	eafffffe 	b	abc <__cs3_isr_undef>
+
+00000ac0 <__cs3_isr_swi>:
+ ac0:	eafffffe 	b	ac0 <__cs3_isr_swi>
+
+00000ac4 <__cs3_isr_pabort>:
+ ac4:	eafffffe 	b	ac4 <__cs3_isr_pabort>
+
+00000ac8 <__cs3_isr_dabort>:
+ ac8:	eafffffe 	b	ac8 <__cs3_isr_dabort>
+
+00000acc <__cs3_isr_irq>:
+ acc:	eafffffe 	b	acc <__cs3_isr_irq>
+
+00000ad0 <__cs3_isr_fiq>:
+ ad0:	eafffffe 	b	ad0 <__cs3_isr_fiq>
+
+00000ad4 <__libc_init_array>:
+ ad4:	e92d4070 	push	{r4, r5, r6, lr}
+ ad8:	e59f506c 	ldr	r5, [pc, #108]	; b4c <__libc_init_array+0x78>
+ adc:	e59f606c 	ldr	r6, [pc, #108]	; b50 <__libc_init_array+0x7c>
+ ae0:	e0656006 	rsb	r6, r5, r6
+ ae4:	e1b06146 	asrs	r6, r6, #2
+ ae8:	12455004 	subne	r5, r5, #4
+ aec:	13a04000 	movne	r4, #0
+ af0:	0a000005 	beq	b0c <__libc_init_array+0x38>
+ af4:	e5b53004 	ldr	r3, [r5, #4]!
+ af8:	e2844001 	add	r4, r4, #1
+ afc:	e1a0e00f 	mov	lr, pc
+ b00:	e12fff13 	bx	r3
+ b04:	e1560004 	cmp	r6, r4
+ b08:	1afffff9 	bne	af4 <__libc_init_array+0x20>
+ b0c:	e59f5040 	ldr	r5, [pc, #64]	; b54 <__libc_init_array+0x80>
+ b10:	e59f6040 	ldr	r6, [pc, #64]	; b58 <__libc_init_array+0x84>
+ b14:	e0656006 	rsb	r6, r5, r6
+ b18:	eb000012 	bl	b68 <_init>
+ b1c:	e1b06146 	asrs	r6, r6, #2
+ b20:	12455004 	subne	r5, r5, #4
+ b24:	13a04000 	movne	r4, #0
+ b28:	0a000005 	beq	b44 <__libc_init_array+0x70>
+ b2c:	e5b53004 	ldr	r3, [r5, #4]!
+ b30:	e2844001 	add	r4, r4, #1
+ b34:	e1a0e00f 	mov	lr, pc
+ b38:	e12fff13 	bx	r3
+ b3c:	e1560004 	cmp	r6, r4
+ b40:	1afffff9 	bne	b2c <__libc_init_array+0x58>
+ b44:	e8bd4070 	pop	{r4, r5, r6, lr}
+ b48:	e12fff1e 	bx	lr
+ b4c:	00000b80 	.word	0x00000b80
+ b50:	00000b80 	.word	0x00000b80
+ b54:	00000b80 	.word	0x00000b80
+ b58:	00000b88 	.word	0x00000b88
+
+Disassembly of section .rodata:
+
+00000b60 <_global_impure_ptr>:
+ b60:	00000bc8 00000043                       ....C...
+
+00000b68 <_init>:
+ b68:	e1a0c00d 	mov	r12, sp
+ b6c:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
+ b70:	e24cb004 	sub	r11, r12, #4
+ b74:	e24bd028 	sub	sp, r11, #40	; 0x28
+ b78:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
+ b7c:	e12fff1e 	bx	lr
+
+00000b80 <__init_array_start>:
+ b80:	000009ec 	.word	0x000009ec
+
+00000b84 <__frame_dummy_init_array_entry>:
+ b84:	00000208                                ....
+
+00000b88 <__libc_fini>:
+ b88:	e1a0c00d 	mov	r12, sp
+ b8c:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
+ b90:	e24cb004 	sub	r11, r12, #4
+ b94:	e24bd028 	sub	sp, r11, #40	; 0x28
+ b98:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
+ b9c:	e12fff1e 	bx	lr
+
+00000ba0 <__fini_array_start>:
+ ba0:	000001c4 	.word	0x000001c4
+
+00000ba4 <__cs3_regions>:
+ ba4:	00000000 	.word	0x00000000
+ ba8:	00000040 	.word	0x00000040
+ bac:	00000040 	.word	0x00000040
+ bb0:	00000fb8 	.word	0x00000fb8
+ bb4:	00000020 	.word	0x00000020
